@@ -28,6 +28,14 @@ def move(robot, table):
         x_coord, y_coord = robot.coords()
         table.set(x_coord, y_coord, robot)
 
+def print_help():
+    print("Commands")
+    print("1. PLACE <x:int>, <y:int>, <orientation:NORTH|SOUTH|EAST|WEST> - Places a robot in the table depending on the X and Y axes, and orientation.")
+    print("2. MOVE - Moves the robot forward relative its current orientation.")
+    print("3. LEFT - Makes the robot face left relative its current orientation.")
+    print("4. RIGHT - Makes the robot face right relative its current orientation.")
+    print("5. REPORT - Prints an output of the robot's current location and orientation.")
+
 if __name__ == '__main__':
 
     while True:
@@ -140,6 +148,8 @@ if __name__ == '__main__':
         elif action == Command.RIGHT.name:
             robot.right()
         elif action == Command.HELP.name:
-            pass
+            print_help()
+        else:
+            print('Type HELP for more information')
 
         table.display()
