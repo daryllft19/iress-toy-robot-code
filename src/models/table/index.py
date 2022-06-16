@@ -10,7 +10,7 @@ class Table:
 
     def display(self):
         for y in range(self._length):
-            print(self._grid[y])
+            print('\t'.join(map(lambda x: str('_' if x == -1 else x), self._grid[y])))
 
     def get(self, x, y):
         return self._grid[y][x]
