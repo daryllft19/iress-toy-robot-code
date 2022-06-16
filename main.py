@@ -8,7 +8,25 @@ def initialize(robot=Robot(), table=Table()):
     table.set(x_coord, y_coord, robot)
     return robot, table
 
+def is_move_valid(robot, table):
+    x, y = robot.coords()
+    length, width = table.dimensions()
 
+    if  robot.orientation() == Orientation.NORTH.name and y+1 >= length or \
+        robot.orientation() == Orientation.SOUTH.name and y-1 < 0 or \
+        robot.orientation() == Orientation.EAST.name and x+1 >= width or \
+        robot.orientation() == Orientation.WEST.name and x-1 < 0:
+            return False
+
+    return True
+
+def move(robot, table):
+    if is_move_valid(robot, table):
+        x_coord, y_coord = robot.coords()
+        table.set(x_coord, y_coord, -1)
+        robot.move()
+        x_coord, y_coord = robot.coords()
+        table.set(x_coord, y_coord, robot)
 
 if __name__ == '__main__':
 
@@ -103,17 +121,17 @@ if __name__ == '__main__':
         elif len(command) == 2:
             action,parameter = command[:2]
 
-        if action == Command.PLACE:
+        if action == Command.PLACE.name:
             pass
-        elif action == Command.REPORT:
+        elif action == Command.REPORT.name:
             pass
-        elif action == Command.MOVE:
-            pass
-        elif action == Command.LEFT:
-            pass
-        elif action == Command.RIGHT:
-            pass
-        elif action == Command.HELP:
+        elif action == Command.MOVE.name:
+            move(robot, table)
+        elif action == Command.LEFT.name:
+            robot.left()
+        elif action == Command.RIGHT.name:
+            robot.right()
+        elif action == Command.HELP.name:
             pass
 
         table.display()
