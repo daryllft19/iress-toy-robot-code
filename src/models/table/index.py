@@ -12,5 +12,8 @@ class Table:
         for y in range(self._length):
             print(self._grid[y])
 
-    def put(self, x, y, entity):
+    def get(self, x, y):
+        return self._grid[y][x]
+
+    def set(self, x, y, entity):
         self._grid[y][x] = entity
