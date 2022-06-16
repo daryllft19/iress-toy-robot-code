@@ -1,7 +1,7 @@
 from enum import Enum, auto
 
 class Orientation(Enum):
-    NORTH = auto()
-    SOUTH = auto()
-    WEST = auto()
-    EAST = auto()
+    NORTH = 'NORTH'
+    SOUTH = 'SOUTH'
+    WEST = 'WEST'
+    EAST = 'EAST'
