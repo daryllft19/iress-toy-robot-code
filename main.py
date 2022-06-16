@@ -1,0 +1,119 @@
+from src.constants.command import Command
+from src.constants.orientation import Orientation
+from src.models.robot import Robot
+from src.models.table import Table
+
+def initialize(robot=Robot(), table=Table()):
+    x_coord, y_coord = robot.coords()
+    table.set(x_coord, y_coord, robot)
+    return robot, table
+
+
+
+if __name__ == '__main__':
+
+    while True:
+        try:
+            table_length = input('Table Length (Defaults to 5) >> ')
+
+            if not table_length:
+                table_length = 5
+                break
+            else:
+                table_length = int(table_length)
+        except ValueError:
+            print('Table length should be a positive integer.')
+            continue
+
+        if isinstance(table_length, int) and table_length >= 1:
+            break
+
+        print('Table width should be a positive integer.')
+
+    while True:
+        try:
+            table_width = input('Table Width (Defaults to 5) >> ')
+            if not table_width:
+                table_width = 5
+                break
+            else:
+                table_width = int(table_width)
+        except ValueError:
+            print('Table width should be a positive integer.')
+            continue
+
+        if isinstance(table_width, int) and table_width >= 1:
+            break
+        
+        print('Table width should be a positive integer.')
+    
+    while True:
+        try:
+            robot_x = input("Robot's X coordinate (Defaults to 0) >> ")
+            if not robot_x:
+                robot_x = 0
+                break
+            else:
+                robot_x = int(robot_x)
+        except ValueError:
+            print("Robot's X coordinate should be zero or a positive integer.")
+            continue
+
+        if isinstance(robot_x, int) and robot_x >= 0:
+            break
+    
+        print("Robot's X coordinate should be zero or a positive integer.")
+            
+    while True:
+        try:
+            robot_y = input("Robot's Y Coordinate (Defaults to 0): ")
+            if not robot_y:
+                robot_y = 0
+                break
+            else:
+                robot_y = int(robot_y)
+        except ValueError:
+            print("Robot's Y coordinate should be zero or a positive integer.")
+            continue
+
+        if isinstance(robot_y, int) and robot_y >= 0:
+            break
+
+        print("Robot's Y coordinate should be zero or a positive integer.")
+
+    while True:
+        robot_orientation = input('Robot Orientation (Defaults to NORTH): ')
+        if not robot_orientation:
+            robot_orientation = 'NORTH'
+
+        if isinstance(robot_orientation, str) and robot_orientation in Orientation.__members__.keys():
+            break
+
+    print('Initializing...')
+    print(f'Table(length={table_length}, width={table_width})')
+    print(f'Robot(x={robot_x}, y={robot_y}, orientation={robot_orientation})')
+    robot, table = initialize(robot=Robot(x=robot_x, y=robot_y, orientation=robot_orientation), table=Table(length=table_length, width=table_width))
+    print('Done!\n')
+
+    while True:
+        command = input('>> ').split(' ')
+
+        if len(command) == 1:
+            action = command[0]
+        elif len(command) == 2:
+            action,parameter = command[:2]
+
+        if action == Command.PLACE:
+            pass
+        elif action == Command.REPORT:
+            pass
+        elif action == Command.MOVE:
+            pass
+        elif action == Command.LEFT:
+            pass
+        elif action == Command.RIGHT:
+            pass
+        elif action == Command.HELP:
+            pass
+
+        table.display()
