@@ -1,4 +1,3 @@
-from ast import Or
 from src.models.robot import Robot
 from src.constants.orientation import Orientation
 
