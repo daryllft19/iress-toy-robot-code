@@ -4,6 +4,25 @@ class Robot:
     def __init__(self, x=0, y=0, orientation=Orientation.NORTH):
         self.place(x, y, orientation)
 
+    def __str__(self):
+        val = 'R'
+        if Orientation.NORTH:
+            val += ' ^'
+        elif Orientation.SOUTH:
+            val += ' v'
+        elif Orientation.WEST:
+            val += ' <'
+        elif Orientation.EAST:
+            val += ' >'
+
+        return val
+
+    def __repr__(self):
+        return str(self)
+
+    def coords(self):
+        return self._x, self._y
+
     def place(self, x, y, orientation):
         self._x = x
         self._y = y
