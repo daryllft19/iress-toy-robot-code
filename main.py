@@ -122,9 +122,17 @@ if __name__ == '__main__':
             action,parameter = command[:2]
 
         if action == Command.PLACE.name:
-            pass
+            try:
+                robot_x, robot_y, robot_orientation = parameter.split(',')
+                robot_x = int(robot_x)
+                robot_y = int(robot_y)
+
+                robot, table = initialize(robot=Robot(x=robot_x, y=robot_y, orientation=robot_orientation), table=Table(length=table_length, width=table_width))
+            except:
+                pass
         elif action == Command.REPORT.name:
-            pass
+            robot_x, robot_y, robot_orientation = robot.report()
+            print(f'>> Output: {robot_x} {robot_y} {robot_orientation}')
         elif action == Command.MOVE.name:
             move(robot, table)
         elif action == Command.LEFT.name:
