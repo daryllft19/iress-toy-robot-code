@@ -1,7 +1,7 @@
-from constants.orientation import Orientation
+from src.constants.orientation import Orientation
 
 class Robot:
-    def __init__(self, x, y, orientation):
+    def __init__(self, x=0, y=0, orientation=Orientation.NORTH):
         self.place(x, y, orientation)
 
     def place(self, x, y, orientation):
@@ -14,9 +14,9 @@ class Robot:
 
     def move(self):
         if self._orientation == Orientation.NORTH:
-            self._y -= 1
-        elif self._orientation == Orientation.SOUTH:
             self._y += 1
+        elif self._orientation == Orientation.SOUTH:
+            self._y -= 1
         elif self._orientation == Orientation.WEST:
             self._x -= 1
         elif self._orientation == Orientation.EAST:
