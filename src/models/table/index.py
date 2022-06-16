@@ -1,5 +1,5 @@
 class Table:
-    def __init__(self, length, width):
+    def __init__(self, length=5, width=5):
         self._length = length
         self._width = width
 
@@ -11,3 +11,6 @@ class Table:
     def display(self):
         for y in range(self._length):
             print(self._grid[y])
+
+    def put(self, x, y, entity):
+        self._grid[y][x] = entity
