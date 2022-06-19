@@ -16,7 +16,14 @@ class Table:
             print('\t'.join(map(lambda x: str('_' if x == -1 else x), self._grid[y])))
 
     def get(self, x, y):
-        return self._grid[y][x]
+        row = self._length - y - 1
+        column = x
+
+        if 0 <= row <= self._length - 1 and 0 <= column <= self._width - 1:
+            return self._grid[self._length - y - 1][x]
+        else:
+            pass
+            # raise IndexError('Out of bounds')
 
     def set(self, x, y, entity):
         row = self._length - y - 1
@@ -24,3 +31,6 @@ class Table:
 
         if 0 <= row <= self._length - 1 and 0 <= column <= self._width - 1:
             self._grid[row][column] = entity
+        else:
+            pass
+            # raise IndexError('Out of bounds')
