@@ -135,7 +135,8 @@ if __name__ == '__main__':
                 robot_x = int(robot_x)
                 robot_y = int(robot_y)
 
-                robot, table = initialize(robot=Robot(x=robot_x, y=robot_y, orientation=robot_orientation), table=Table(length=table_length, width=table_width))
+                if 0 <= robot_x < table_width and 0 <= robot_y < table_length:
+                    robot, table = initialize(robot=Robot(x=robot_x, y=robot_y, orientation=robot_orientation), table=Table(length=table_length, width=table_width))
             except:
                 pass
         elif action == Command.REPORT.name:
