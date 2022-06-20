@@ -68,11 +68,11 @@ R ^     _       _       _       _
 
 ### Available actionable commands
 
-- [PLACE](/#PLACE)
-- [MOVE](/#MOVE)
-- [LEFT](/#LEFT)
-- [RIGHT](/#RIGHT)
-- [REPORT](/#REPORT)
+- [PLACE](#place)
+- [MOVE](#move)
+- [LEFT](#left)
+- [RIGHT](#right)
+- [REPORT](#report)
 
 #### PLACE
 
